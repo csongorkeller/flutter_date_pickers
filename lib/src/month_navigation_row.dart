@@ -12,16 +12,16 @@ class MonthNavigationRow extends StatelessWidget {
   /// Usually [Text] widget.
   final Widget title;
 
-  const MonthNavigationRow({
-    Key key,
-    this.previousPageIconKey,
-    this.nextPageIconKey,
-    this.onNextMonthTapped,
-    this.onPreviousMonthTapped,
-    this.nextMonthTooltip,
-    this.previousMonthTooltip,
-    this.title
-  }) : super(key: key);
+  const MonthNavigationRow(
+      {Key key,
+      this.previousPageIconKey,
+      this.nextPageIconKey,
+      this.onNextMonthTapped,
+      this.onPreviousMonthTapped,
+      this.nextMonthTooltip,
+      this.previousMonthTooltip,
+      this.title})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -33,7 +33,8 @@ class MonthNavigationRow extends StatelessWidget {
           sortKey: MonthPickerSortKey.previousMonth,
           child: IconButton(
             key: previousPageIconKey,
-            icon: const Icon(Icons.chevron_left),
+            icon: const Icon(Icons.chevron_left,
+                color: Color.fromRGBO(194, 193, 193, 1)),
             tooltip: previousMonthTooltip,
             onPressed: onPreviousMonthTapped,
           ),
@@ -51,7 +52,8 @@ class MonthNavigationRow extends StatelessWidget {
           sortKey: MonthPickerSortKey.nextMonth,
           child: IconButton(
             key: nextPageIconKey,
-            icon: const Icon(Icons.chevron_right),
+            icon: const Icon(Icons.chevron_right,
+                color: Color.fromRGBO(194, 193, 193, 1)),
             tooltip: nextMonthTooltip,
             onPressed: onNextMonthTapped,
           ),
