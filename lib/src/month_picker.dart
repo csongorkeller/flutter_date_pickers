@@ -88,7 +88,8 @@ class _MonthPickerState extends State<MonthPicker> {
   void initState() {
     super.initState();
     // Initially display the pre-selected date.
-    final int yearPage = DatePickerUtils.yearDelta(widget.firstDate, widget.selectedDate);
+    final int yearPage =
+        DatePickerUtils.yearDelta(widget.firstDate, widget.selectedDate);
     _monthPickerController = PageController(initialPage: yearPage);
     _handleYearPageChanged(yearPage);
     _updateCurrentDate();
@@ -98,7 +99,8 @@ class _MonthPickerState extends State<MonthPicker> {
   void didUpdateWidget(MonthPicker oldWidget) {
     super.didUpdateWidget(oldWidget);
     if (widget.selectedDate != oldWidget.selectedDate) {
-      final int yearPage = DatePickerUtils.yearDelta(widget.firstDate, widget.selectedDate);
+      final int yearPage =
+          DatePickerUtils.yearDelta(widget.firstDate, widget.selectedDate);
       _monthPickerController = PageController(initialPage: yearPage);
       _handleYearPageChanged(yearPage);
     }
@@ -194,7 +196,9 @@ class _MonthPickerState extends State<MonthPicker> {
               key: ValueKey<DateTime>(widget.selectedDate),
               controller: _monthPickerController,
               scrollDirection: Axis.horizontal,
-              itemCount: DatePickerUtils.yearDelta(widget.firstDate, widget.lastDate) + 1,
+              itemCount:
+                  DatePickerUtils.yearDelta(widget.firstDate, widget.lastDate) +
+                      1,
               itemBuilder: _buildItems,
               onPageChanged: _handleYearPageChanged,
             ),
@@ -206,7 +210,8 @@ class _MonthPickerState extends State<MonthPicker> {
               sortKey: YearPickerSortKey.previousYear,
               child: IconButton(
                 key: widget.datePickerKeys?.previousPageIconKey,
-                icon: const Icon(Icons.chevron_left),
+                icon: const Icon(Icons.chevron_left,
+                    color: Color.fromRGBO(194, 193, 193, 1)),
                 tooltip: _isDisplayingFirstYear
                     ? null
                     : '${intl.DateFormat.y().format(_previousYearDate)}',
@@ -221,7 +226,8 @@ class _MonthPickerState extends State<MonthPicker> {
               sortKey: YearPickerSortKey.nextYear,
               child: IconButton(
                 key: widget.datePickerKeys?.nextPageIconKey,
-                icon: const Icon(Icons.chevron_right),
+                icon: const Icon(Icons.chevron_right,
+                    color: Color.fromRGBO(194, 193, 193, 1)),
                 tooltip: _isDisplayingLastYear
                     ? null
                     : '${intl.DateFormat.y().format(_nextYearDate)}',
@@ -301,7 +307,8 @@ class _MonthPicker extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final MaterialLocalizations localizations = MaterialLocalizations.of(context);
+    final MaterialLocalizations localizations =
+        MaterialLocalizations.of(context);
     final Locale locale = Localizations.localeOf(context);
 
     final ThemeData themeData = Theme.of(context);
@@ -349,7 +356,8 @@ class _MonthPicker extends StatelessWidget {
                 '${localizations.formatDecimal(month)}, ${localizations.formatFullDate(monthToBuild)}',
             selected: isSelectedMonth,
             child: ExcludeSemantics(
-              child: Text(intl.DateFormat.MMM(locale.languageCode).format(monthToBuild),
+              child: Text(
+                  intl.DateFormat.MMM(locale.languageCode).format(monthToBuild),
                   style: itemStyle),
             ),
           ),
